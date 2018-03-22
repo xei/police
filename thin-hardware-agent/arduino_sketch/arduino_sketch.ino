@@ -68,14 +68,17 @@ void loop() {
 }
 
 String getActionJson() {
+  
   if(Serial.available() > 0) {
       return Serial.readString();
   } else {
     return "";
   }
+  
 }
 
 void parseActionJson(String actionJson) {
+  
   if(actionJson != "") {
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject& jsonObj = jsonBuffer.parseObject(actionJson);
@@ -90,9 +93,11 @@ void parseActionJson(String actionJson) {
     digitalWrite(o_d12, jsonObj["d12"]);
     digitalWrite(o_d13, jsonObj["d13"]);
   }
+  
 }
 
 JsonObject& createStateJson() {
+  
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& jsonObj = jsonBuffer.createObject();
 
@@ -109,7 +114,3 @@ JsonObject& createStateJson() {
   return jsonObj;
   
 }
-
-
-
-
