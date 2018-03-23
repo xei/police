@@ -15,11 +15,15 @@ import io.github.xei.police.R
  * Use the [JoystickFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class JoystickFragment : Fragment() {
+class JoystickFragment : Fragment(), JoystickContract.View {
 
     companion object {
         fun newInstance() = JoystickFragment()
     }
+
+    override lateinit var presenter: JoystickContract.Presenter
+    override val isActive: Boolean
+        get() = isAdded
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,6 +31,12 @@ class JoystickFragment : Fragment() {
         return inflater!!.inflate(R.layout.fragment_joystick, container, false)
     }
 
+    override fun findViews(rootView: View) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
+    override fun setOnClickListeners() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 }
