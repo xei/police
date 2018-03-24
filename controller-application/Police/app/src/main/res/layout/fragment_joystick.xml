@@ -1,13 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.xei.police.joystick.JoystickFragment">
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:background="@color/background_joystick"
+    tools:context="io.github.xei.police.joystick.JoystickFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <include layout="@layout/layout_fragment_joystick_arrowkeys" />
 
-</FrameLayout>
+    <include layout="@layout/layout_fragment_joystick_center" />
+
+    <include layout="@layout/layout_fragment_joystick_actionbuttons" />
+
+</LinearLayout>
