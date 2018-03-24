@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Police</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Joystick Screen -->
+    <string name="text_button_action_A">A</string>
+    <string name="text_button_action_B">B</string>
+    <string name="text_button_action_C">C</string>
+    <string name="text_button_action_D">D</string>
+
 </resources>
