@@ -18,6 +18,6 @@ interface JoystickContract {
     }
 
     interface Presenter : BasePresenter {
-
+        fun performVoiceCommand(recognizedCommand: String)
     }
 }

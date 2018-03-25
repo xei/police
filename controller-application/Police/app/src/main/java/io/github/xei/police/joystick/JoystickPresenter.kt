@@ -13,4 +13,11 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
     override fun start() {
 
     }
+
+    override fun performVoiceCommand(recognizedCommand: String) {
+        if (view.isActive) {
+            view.showToast(recognizedCommand)
+        }
+    }
+
 }
