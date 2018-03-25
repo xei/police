@@ -24,7 +24,7 @@ import io.github.xei.police.R
 class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener {
 
     companion object {
-        private const val REQUEST_CODE_SPEECH_RECOGNIZE = 1
+        private const val REQUEST_CODE_SPEECH_RECOGNIZE = 100
 
         fun newInstance() = JoystickFragment()
     }
