@@ -12,4 +12,5 @@ interface BaseView<T> {
 
     fun findViews(rootView: View)
     fun setOnClickListeners()
+    fun showToast(text: String)
 }
