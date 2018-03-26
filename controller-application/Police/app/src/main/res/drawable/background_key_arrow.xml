@@ -4,6 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" >
 
+    <solid android:color="@color/background_buttons" />
+
     <stroke
         android:color="@color/textAndStroke_actionButton"
         android:width="2dp" />
