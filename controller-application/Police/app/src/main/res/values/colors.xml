@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#21f33a</color>
-    <color name="colorPrimaryDark">#2962FF</color>
+
+    <color name="blue_800">#1565C0</color>
+    <color name="blue_a700">#2962FF</color>
+    
+    <color name="colorPrimary">@color/blue_a700</color>
+    <color name="colorPrimaryDark">@color/blue_800</color>
     <color name="colorAccent">#E91E63</color>
 
     <!-- Joystick Screen -->
-    <color name="background_joystick">@color/colorPrimaryDark</color>
+    <color name="background_joystick">@color/colorPrimary</color>
     <color name="textAndStroke_actionButton">#fff</color>
     <color name="textAndStroke_switchButton">#fff</color>
 
