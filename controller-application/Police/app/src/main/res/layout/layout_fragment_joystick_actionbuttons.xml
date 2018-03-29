@@ -6,53 +6,53 @@
     android:layout_width="0dp"
     android:layout_weight="1"
     android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_gravity="center" >
 
     <Button
         android:id="@+id/fragmentJoystick_imageButton_upArrowButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/joystickScreen_dimens_actionButtons"
+        android:layout_height="@dimen/joystickScreen_dimens_actionButtons"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/joystickScreen_margin_actionButtons"
         android:background="@drawable/background_button_action"
         android:text="@string/text_button_action_A"
-        android:textSize="20sp"
+        android:textSize="@dimen/joystickScreen_textSize_actionButtons"
         android:textColor="@color/textAndStroke_actionButton"/>
 
     <Button
         android:id="@+id/fragmentJoystick_imageButton_leftArrowButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/joystickScreen_dimens_actionButtons"
+        android:layout_height="@dimen/joystickScreen_dimens_actionButtons"
         android:layout_below="@+id/fragmentJoystick_imageButton_upArrowButton"
         android:layout_toLeftOf="@+id/fragmentJoystick_imageButton_upArrowButton"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="@dimen/joystickScreen_margin_actionButtons"
         android:background="@drawable/background_button_action"
         android:text="@string/text_button_action_B"
-        android:textSize="20sp"
+        android:textSize="@dimen/joystickScreen_textSize_actionButtons"
         android:textColor="@color/textAndStroke_actionButton"/>
 
     <Button
         android:id="@+id/fragmentJoystick_imageButton_rightArrowButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/joystickScreen_dimens_actionButtons"
+        android:layout_height="@dimen/joystickScreen_dimens_actionButtons"
         android:layout_below="@+id/fragmentJoystick_imageButton_upArrowButton"
         android:layout_toRightOf="@+id/fragmentJoystick_imageButton_upArrowButton"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="@dimen/joystickScreen_margin_actionButtons"
         android:background="@drawable/background_button_action"
         android:text="@string/text_button_action_C"
-        android:textSize="20sp"
+        android:textSize="@dimen/joystickScreen_textSize_actionButtons"
         android:textColor="@color/textAndStroke_actionButton"/>
 
     <Button
         android:id="@+id/fragmentJoystick_imageButton_downArrowButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/joystickScreen_dimens_actionButtons"
+        android:layout_height="@dimen/joystickScreen_dimens_actionButtons"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/fragmentJoystick_imageButton_leftArrowButton"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/joystickScreen_margin_actionButtons"
         android:background="@drawable/background_button_action"
         android:text="@string/text_button_action_D"
-        android:textSize="20sp"
+        android:textSize="@dimen/joystickScreen_textSize_actionButtons"
         android:textColor="@color/textAndStroke_actionButton"/>
 
 </RelativeLayout>

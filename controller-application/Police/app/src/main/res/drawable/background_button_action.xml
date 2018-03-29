@@ -8,6 +8,6 @@
 
     <stroke
         android:color="@color/textAndStroke_actionButton"
-        android:width="2dp" />
+        android:width="@dimen/joystickScreen_stroke_actionButtons" />
 
 </shape>

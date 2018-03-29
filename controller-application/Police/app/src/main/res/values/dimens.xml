@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Joystick Screen -->
+    <dimen name="joystickScreen_dimens_arrowKeys">48dp</dimen>
+    <dimen name="joystickScreen_stroke_arrowKeys">2dp</dimen>
+    <dimen name="joystickScreen_radius_arrowKeys">4dp</dimen>
+    <dimen name="joystickScreen_margin_arrowKeys">16dp</dimen>
+    <dimen name="joystickScreen_textSize_joystickTitle">25sp</dimen>
+    <dimen name="joystickScreen_dimens_voiceCommandButton">56dp</dimen>
+    <dimen name="joystickScreen_width_switchButtons">56dp</dimen>
+    <dimen name="joystickScreen_height_switchButtons">24dp</dimen>
+    <dimen name="joystickScreen_marginButton_switchButtons">16dp</dimen>
+    <dimen name="joystickScreen_stroke_switchButtons">1dp</dimen>
+    <dimen name="joystickScreen_radius_switchButtons">4dp</dimen>
+    <dimen name="joystickScreen_dimens_actionButtons">48dp</dimen>
+    <dimen name="joystickScreen_stroke_actionButtons">2dp</dimen>
+    <dimen name="joystickScreen_textSize_actionButtons">20sp</dimen>
+    <dimen name="joystickScreen_margin_actionButtons">16dp</dimen>
+
+</resources>
