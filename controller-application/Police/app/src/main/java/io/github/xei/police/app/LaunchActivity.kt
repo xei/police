@@ -1,7 +1,8 @@
-package io.github.xei.police
+package io.github.xei.police.app
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import io.github.xei.police.R
 import io.github.xei.police.joystick.JoystickActivity
 
 class LaunchActivity : AppCompatActivity() {
