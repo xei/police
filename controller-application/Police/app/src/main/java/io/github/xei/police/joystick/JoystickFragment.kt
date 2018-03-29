@@ -2,6 +2,7 @@ package io.github.xei.police.joystick
 
 
 import android.app.Activity
+import android.bluetooth.BluetoothAdapter
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 
 import io.github.xei.police.R
+import io.github.xei.police.exception.BluetoothNotSupportException
 
 
 /**
@@ -24,7 +26,8 @@ import io.github.xei.police.R
 class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener {
 
     companion object {
-        private const val REQUEST_CODE_SPEECH_RECOGNIZE = 100
+        private const val REQUEST_CODE_ENABLE_BLUETOOTH = 100
+        private const val REQUEST_CODE_SPEECH_RECOGNIZE = 200
 
         fun newInstance() = JoystickFragment()
     }
@@ -33,29 +36,48 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
     override val isActive: Boolean
         get() = isAdded
 
+    private lateinit var mUpArrowKeyImageButton: ImageButton
     private lateinit var mVoiceCommandImageButton: ImageButton
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val rootView =  inflater!!.inflate(R.layout.fragment_joystick, container, false)
+        val rootView =  inflater.inflate(R.layout.fragment_joystick, container, false)
 
         findViews(rootView)
         setOnClickListeners()
+
+        presenter.start()
 
         return rootView
     }
 
     override fun findViews(rootView: View) {
+        mUpArrowKeyImageButton = rootView.findViewById(R.id.fragmentJoystick_imageButton_upArrowButton)
         mVoiceCommandImageButton = rootView.findViewById(R.id.layoutFragmentJoystickCenter_imageButton_voiceCommand)
     }
 
     override fun setOnClickListeners() {
+        mUpArrowKeyImageButton.setOnClickListener(this)
         mVoiceCommandImageButton.setOnClickListener(this)
     }
 
     override fun showToast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun isBluetoothEnabled(): Boolean {
+        try {
+            return BluetoothAdapter.getDefaultAdapter().isEnabled
+        } catch (npe: NullPointerException) {
+            throw BluetoothNotSupportException()
+        }
+    }
+
+    override fun startEnableBluetoothActivityForResult() {
+        val intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+        startActivityForResult(intent, REQUEST_CODE_ENABLE_BLUETOOTH)
     }
 
     private fun startVoiceRecognitionActivityForResult() {
@@ -84,6 +106,12 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
+
+            REQUEST_CODE_ENABLE_BLUETOOTH -> if (resultCode == Activity.RESULT_OK) {
+                // TODO: connect to device
+                // TODO: change LED to green
+            }
+
             REQUEST_CODE_SPEECH_RECOGNIZE -> if (resultCode == Activity.RESULT_OK && data != null) {
                 val recognizedCommand = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
                 presenter.performVoiceCommand(recognizedCommand[0])
