@@ -6,7 +6,7 @@
 
     <!-- Joystick Screen -->
 
-    <string name="prompt_voiceCommand_dialog">Say your command...</string>
+    <string name="prompt_voiceCommand_dialog">Say your command…</string>
 
     <string name="text_button_action_A">A</string>
     <string name="text_button_action_B">B</string>
