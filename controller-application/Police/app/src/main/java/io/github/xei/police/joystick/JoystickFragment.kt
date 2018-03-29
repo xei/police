@@ -69,7 +69,7 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
 
     override fun isBluetoothEnabled(): Boolean {
         try {
-            return BluetoothAdapter.getDefaultAdapter().isEnabled
+            return BluetoothAdapter.getDefaultAdapter()!!.isEnabled
         } catch (npe: NullPointerException) {
             throw BluetoothNotSupportException()
         }
