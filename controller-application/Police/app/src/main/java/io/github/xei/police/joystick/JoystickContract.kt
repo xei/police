@@ -1,5 +1,6 @@
 package io.github.xei.police.joystick
 
+import io.github.xei.police.exception.BluetoothNotSupportException
 import io.github.xei.police.util.mvp.BaseModel
 import io.github.xei.police.util.mvp.BasePresenter
 import io.github.xei.police.util.mvp.BaseView
@@ -15,6 +16,9 @@ interface JoystickContract {
 
     interface View : BaseView<Presenter> {
 
+        @Throws(BluetoothNotSupportException::class)
+        fun isBluetoothEnabled(): Boolean
+        fun startEnableBluetoothActivityForResult()
     }
 
     interface Presenter : BasePresenter {
