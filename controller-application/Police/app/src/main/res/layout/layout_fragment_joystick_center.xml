@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/joystickScreen_marginTop_joystickTitle"
         android:text="@string/app_name"
         android:textSize="@dimen/joystickScreen_textSize_joystickTitle"
         android:textColor="#fff"/>

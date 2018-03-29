@@ -8,6 +8,7 @@
     <dimen name="joystickScreen_radius_arrowKeys">4dp</dimen>
     <dimen name="joystickScreen_margin_arrowKeys">16dp</dimen>
     <dimen name="joystickScreen_textSize_joystickTitle">25sp</dimen>
+    <dimen name="joystickScreen_marginTop_joystickTitle">8dp</dimen>
     <dimen name="joystickScreen_dimens_voiceCommandButton">56dp</dimen>
     <dimen name="joystickScreen_width_switchButtons">56dp</dimen>
     <dimen name="joystickScreen_height_switchButtons">24dp</dimen>
