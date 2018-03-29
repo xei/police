@@ -13,5 +13,6 @@ class LaunchActivity : AppCompatActivity() {
 
         // TODO: temporarily open the Joystick activity
         JoystickActivity.start(this)
+        finish()
     }
 }
