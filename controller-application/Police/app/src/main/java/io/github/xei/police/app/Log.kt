@@ -1,7 +1,5 @@
 package io.github.xei.police.app
 
-import android.util.Log
-
 class Log {
 
     companion object {
