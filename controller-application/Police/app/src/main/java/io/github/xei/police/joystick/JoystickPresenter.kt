@@ -16,7 +16,7 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
         if (view.isActive) {
             try {
                 if (view.isBluetoothEnabled()) {
-                    // TODO: connect to device
+                    view.connectToHardwareAgent()
                 } else {
                     view.startEnableBluetoothActivityForResult()
                 }

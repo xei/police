@@ -18,7 +18,9 @@ interface JoystickContract {
 
         @Throws(BluetoothNotSupportException::class)
         fun isBluetoothEnabled(): Boolean
+        fun startBluetoothSettingActivity()
         fun startEnableBluetoothActivityForResult()
+        fun connectToHardwareAgent()
     }
 
     interface Presenter : BasePresenter {
