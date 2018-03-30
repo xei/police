@@ -1,5 +1,6 @@
 package io.github.xei.police.app
 
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 class State {
@@ -30,5 +31,7 @@ class State {
 
     @SerializedName("d7")
     var d7: Int = 0
+
+    override fun toString(): String = Gson().toJson(this)
 
 }

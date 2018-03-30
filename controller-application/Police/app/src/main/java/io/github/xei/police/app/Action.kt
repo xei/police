@@ -1,5 +1,6 @@
 package io.github.xei.police.app
 
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 class Action {
@@ -30,5 +31,7 @@ class Action {
 
     @SerializedName("d13")
     var d3: Float = 0.toFloat()
+
+    override fun toString(): String = Gson().toJson(this)
 
 }
