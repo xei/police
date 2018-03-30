@@ -135,6 +135,17 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
 
     }
 
+    private fun listenForSensorState() {
+        Thread {
+            while(!Thread.currentThread().isInterrupted /*&& !stopWorker*/)
+            {
+                if (mInputStream != null) {
+//                    readData()
+                }
+            }
+        }.start()
+    }
+
     override fun disconnectFromHardwareAgent() {
         mInputStream?.close()
         mOutputStream?.close()
