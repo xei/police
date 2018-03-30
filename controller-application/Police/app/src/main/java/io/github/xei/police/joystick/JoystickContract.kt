@@ -1,6 +1,7 @@
 package io.github.xei.police.joystick
 
 import io.github.xei.police.app.Action
+import io.github.xei.police.app.State
 import io.github.xei.police.exception.BluetoothNotSupportException
 import io.github.xei.police.util.mvp.BaseModel
 import io.github.xei.police.util.mvp.BasePresenter
@@ -28,6 +29,7 @@ interface JoystickContract {
     }
 
     interface Presenter : BasePresenter {
+        fun makePolicy(state: State)
         fun performVoiceCommand(recognizedCommand: String)
     }
 }
