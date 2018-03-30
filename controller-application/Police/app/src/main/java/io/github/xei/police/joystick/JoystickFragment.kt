@@ -22,7 +22,9 @@ import java.io.OutputStream
 import java.util.*
 import android.content.ComponentName
 import android.os.Message
+import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.stream.MalformedJsonException
 import io.github.xei.police.app.Action
 import io.github.xei.police.app.State
 import java.io.IOException
@@ -36,6 +38,8 @@ import java.io.IOException
 class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener {
 
     companion object {
+        private const val TAG_DEBUG = "JoystickFragment"
+
         private const val REQUEST_CODE_ENABLE_BLUETOOTH = 100
         private const val REQUEST_CODE_SPEECH_RECOGNIZE = 200
 
@@ -189,8 +193,13 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
         val msg = Message.obtain()
         msg.obj = s
         activity?.runOnUiThread {
-            val sensorsState = mGson.fromJson(s, State::class.java)
-            presenter.makePolicy(sensorsState)
+            try {
+                val sensorsState = mGson.fromJson(s, State::class.java)
+                presenter.makePolicy(sensorsState)
+            } catch (mje: MalformedJsonException) {
+                Log.e(TAG_DEBUG, "MalformedJson: $s")
+            }
+
         }
 
         // Look for more complete messages
