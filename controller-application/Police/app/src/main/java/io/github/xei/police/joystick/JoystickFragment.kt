@@ -21,6 +21,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 import android.content.ComponentName
+import com.google.gson.Gson
 import io.github.xei.police.app.Action
 import java.io.IOException
 
@@ -53,6 +54,7 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
     private var mBluetoothSocket: BluetoothSocket? = null
     private var mInputStream: InputStream? = null
     private var mOutputStream: OutputStream? = null
+    private var mGson = Gson()
     private var mBuffer: String = ""
 
 
@@ -136,9 +138,9 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
 
     }
 
-    private fun listenForSensorState() {
+    override fun listenForSensorState() {
         Thread {
-            while(!Thread.currentThread().isInterrupted /*&& !stopWorker*/)
+            while(!Thread.currentThread().isInterrupted)
             {
                 if (mInputStream != null) {
 //                    readData()
@@ -147,11 +149,11 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
         }.start()
     }
 
-    private fun sendActionToAgent(action: Action) {
+    override fun sendActionToAgent(action: Action) {
         try {
-//            mOutputStream?.write((msg + '\n').toByteArray())
+            mOutputStream?.write((mGson.toJson(action) + '\n').toByteArray())
         } catch (ioe: IOException) {
-            Toast.makeText(context, "Broken Pipe!", Toast.LENGTH_SHORT).show()
+            showToast("Broken Pipe!")
         }
     }
 

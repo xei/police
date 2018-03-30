@@ -1,5 +1,6 @@
 package io.github.xei.police.joystick
 
+import io.github.xei.police.app.Action
 import io.github.xei.police.exception.BluetoothNotSupportException
 import io.github.xei.police.util.mvp.BaseModel
 import io.github.xei.police.util.mvp.BasePresenter
@@ -21,6 +22,8 @@ interface JoystickContract {
         fun startBluetoothSettingActivity()
         fun startEnableBluetoothActivityForResult()
         fun connectToHardwareAgent()
+        fun listenForSensorState()
+        fun sendActionToAgent(action: Action)
         fun disconnectFromHardwareAgent()
     }
 
