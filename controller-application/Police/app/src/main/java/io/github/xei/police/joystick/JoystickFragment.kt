@@ -21,6 +21,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 import android.content.ComponentName
+import io.github.xei.police.app.Action
 import java.io.IOException
 
 
@@ -144,6 +145,14 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
                 }
             }
         }.start()
+    }
+
+    private fun sendActionToAgent(action: Action) {
+        try {
+//            mOutputStream?.write((msg + '\n').toByteArray())
+        } catch (ioe: IOException) {
+            Toast.makeText(context, "Broken Pipe!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun disconnectFromHardwareAgent() {
