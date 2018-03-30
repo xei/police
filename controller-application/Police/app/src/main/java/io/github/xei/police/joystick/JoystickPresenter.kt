@@ -1,7 +1,7 @@
 package io.github.xei.police.joystick
 
-import android.util.Log
 import io.github.xei.police.app.Action
+import io.github.xei.police.app.Log
 import io.github.xei.police.app.State
 import io.github.xei.police.exception.BluetoothNotSupportException
 
@@ -35,11 +35,11 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
     }
 
     override fun makePolicy(state: State) {
-        Log.i(TAG_DEBUG, "State: " + state.toString())
+        Log.i("State: " + state.toString())
         // TODO: make policy based on the sensors state
         val action = Action()
         sendActionToAgent(action)
-        Log.i(TAG_DEBUG, "Action: " + action.toString())
+        Log.e("Action: " + action.toString())
     }
 
     override fun sendActionToAgent(action: Action) {

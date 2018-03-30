@@ -5,8 +5,10 @@ import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.speech.RecognizerIntent
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -14,20 +16,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
-
+import com.google.gson.Gson
 import io.github.xei.police.R
+import io.github.xei.police.app.Action
+import io.github.xei.police.app.Log
+import io.github.xei.police.app.State
 import io.github.xei.police.exception.BluetoothNotSupportException
+import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
-import android.content.ComponentName
-import android.os.Message
-import android.util.Log
-import com.google.gson.Gson
-import com.google.gson.stream.MalformedJsonException
-import io.github.xei.police.app.Action
-import io.github.xei.police.app.State
-import java.io.IOException
 
 
 /**
@@ -196,8 +194,8 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
             try {
                 val sensorsState = mGson.fromJson(s, State::class.java)
                 presenter.makePolicy(sensorsState)
-            } catch (mje: MalformedJsonException) {
-                Log.e(TAG_DEBUG, "MalformedJson: $s")
+            } catch (ise: IllegalStateException) {
+                Log.e("MalformedJson: $s")
             }
 
         }
