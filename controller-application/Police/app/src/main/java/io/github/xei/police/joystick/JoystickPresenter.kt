@@ -51,8 +51,8 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
     override fun performVoiceCommand(recognizedCommand: String) {
 
         when (recognizedCommand) {
-            "Go straight" -> sendActionToAgent(Action())
-            "Come back" -> sendActionToAgent(Action())
+            "go straight" -> sendActionToAgent(Action())
+            "come back" -> sendActionToAgent(Action())
         }
 
         if (view.isActive) {
