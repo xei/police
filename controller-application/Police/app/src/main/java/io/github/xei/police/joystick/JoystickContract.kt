@@ -30,6 +30,7 @@ interface JoystickContract {
 
     interface Presenter : BasePresenter {
         fun makePolicy(state: State)
+        fun sendActionToAgent(action: Action)
         fun performVoiceCommand(recognizedCommand: String)
     }
 }

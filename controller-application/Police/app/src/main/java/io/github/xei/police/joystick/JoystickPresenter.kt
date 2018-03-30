@@ -1,5 +1,6 @@
 package io.github.xei.police.joystick
 
+import io.github.xei.police.app.Action
 import io.github.xei.police.app.State
 import io.github.xei.police.exception.BluetoothNotSupportException
 
@@ -30,9 +31,23 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
 
     override fun makePolicy(state: State) {
         // TODO: make policy based on the sensors state
+        val action = Action()
+        sendActionToAgent(action)
+    }
+
+    override fun sendActionToAgent(action: Action) {
+        if (view.isActive) {
+            view.sendActionToAgent(action)
+        }
     }
 
     override fun performVoiceCommand(recognizedCommand: String) {
+
+        when (recognizedCommand) {
+            "Go straight" -> sendActionToAgent(Action())
+            "Come back" -> sendActionToAgent(Action())
+        }
+
         if (view.isActive) {
             view.showToast(recognizedCommand)
         }
