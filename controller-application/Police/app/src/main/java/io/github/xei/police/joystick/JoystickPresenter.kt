@@ -39,12 +39,12 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
         // TODO: make policy based on the sensors state
         val action = Action()
         sendActionToAgent(action)
-        Log.e("Action: " + action.toString())
     }
 
     override fun sendActionToAgent(action: Action) {
         if (view.isActive) {
             view.sendActionToAgent(action)
+            Log.e("Action: " + action.toString())
         }
     }
 
