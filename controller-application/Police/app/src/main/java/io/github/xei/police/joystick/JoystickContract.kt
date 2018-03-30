@@ -21,6 +21,7 @@ interface JoystickContract {
         fun startBluetoothSettingActivity()
         fun startEnableBluetoothActivityForResult()
         fun connectToHardwareAgent()
+        fun disconnectFromHardwareAgent()
     }
 
     interface Presenter : BasePresenter {

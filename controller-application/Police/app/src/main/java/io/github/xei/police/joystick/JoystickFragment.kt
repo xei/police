@@ -68,6 +68,11 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
         return rootView
     }
 
+    override fun onStop() {
+        super.onStop()
+        disconnectFromHardwareAgent()
+    }
+
     override fun findViews(rootView: View) {
         mUpArrowKeyImageButton = rootView.findViewById(R.id.fragmentJoystick_imageButton_upArrowButton)
         mVoiceCommandImageButton = rootView.findViewById(R.id.layoutFragmentJoystickCenter_imageButton_voiceCommand)
@@ -128,6 +133,12 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
             activity?.finish()
         }
 
+    }
+
+    override fun disconnectFromHardwareAgent() {
+        mInputStream?.close()
+        mOutputStream?.close()
+        mBluetoothSocket?.close()
     }
 
     private fun startVoiceRecognitionActivityForResult() {
