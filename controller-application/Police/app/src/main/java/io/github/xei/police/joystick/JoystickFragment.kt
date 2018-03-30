@@ -21,8 +21,10 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 import android.content.ComponentName
+import android.os.Message
 import com.google.gson.Gson
 import io.github.xei.police.app.Action
+import io.github.xei.police.app.State
 import java.io.IOException
 
 
@@ -40,6 +42,7 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
         private const val BLUETOOTH_NAME_HARDWARE_AGENT = "HC-06"
         // Standard SerialPortService ID
         private const val SPP_UUID_SERIAL_BOARD = "00001101-0000-1000-8000-00805f9b34fb"
+        private val MSG_DELIMITER = '\n'
 
         fun newInstance() = JoystickFragment()
     }
@@ -122,6 +125,8 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
 
             showToast("Device connected to hardware agent.")
 
+            listenForSensorState()
+
         } catch (ioe: IOException) {
             showToast("Connection to hardware agent failed.")
 
@@ -143,11 +148,55 @@ class JoystickFragment : Fragment(), JoystickContract.View, View.OnClickListener
             while(!Thread.currentThread().isInterrupted)
             {
                 if (mInputStream != null) {
-//                    readData()
+                    readData()
                 }
             }
         }.start()
     }
+
+    private fun readData() {
+        try {
+            val availableBytesNo = mInputStream!!.available()
+            if(availableBytesNo > 0) {
+                val inBuffer = ByteArray(1024)
+                val bytesRead = mInputStream!!.read(inBuffer)
+
+                // Convert read bytes into a string
+                val s = String(inBuffer).substring(0, bytesRead)
+                if (s.isNotEmpty()) mBuffer += s
+                parseMessages()
+
+            }
+        } catch (ioe: IOException) {}
+    }
+
+    private fun parseMessages() {
+
+        // Find the first delimiter in the buffer
+        val inx = mBuffer.indexOf(MSG_DELIMITER)
+
+        // If there is none, exit
+        if (inx == -1)
+            return
+
+        // Get the complete message
+        val s = mBuffer.substring(0, inx)
+
+        // Remove the message from the buffer
+        mBuffer = mBuffer.substring(inx + 1)
+
+        // Send to read handler
+        val msg = Message.obtain()
+        msg.obj = s
+        activity?.runOnUiThread {
+            val sensorsState = mGson.fromJson(s, State::class.java)
+            presenter.makePolicy(sensorsState)
+        }
+
+        // Look for more complete messages
+        parseMessages()
+    }
+
 
     override fun sendActionToAgent(action: Action) {
         try {
