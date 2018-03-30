@@ -10,7 +10,9 @@ import io.github.xei.police.exception.BluetoothNotSupportException
  */
 class JoystickPresenter(private val model: JoystickContract.Model, private val view: JoystickContract.View) : JoystickContract.Presenter {
 
-    private val TAG_DEBUG = JoystickPresenter::class.java.simpleName
+    companion object {
+        private const val TAG_DEBUG = "JoystickPresenter"
+    }
 
     init {
         model.presenter = this
