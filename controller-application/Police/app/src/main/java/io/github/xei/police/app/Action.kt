@@ -24,13 +24,13 @@ class Action {
     var p11: Float = 0.toFloat()
 
     @SerializedName("d8")
-    var d8: Float = 0.toFloat()
+    var d8: Int = 0
 
     @SerializedName("d12")
-    var d12: Float = 0.toFloat()
+    var d12: Int = 0
 
     @SerializedName("d13")
-    var d13: Float = 0.toFloat()
+    var d13: Int = 0
 
     override fun toString(): String = Gson().toJson(this)
 
