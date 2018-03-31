@@ -68,13 +68,18 @@ void loop() {
 }
 
 String getActionJson() {
-  
-  if(Serial.available() > 0) {
-      return Serial.readString();
+  String actionJson = "";
+  if (Serial.available() > 0) {
+    char c;
+    do {
+      c = Serial.read();
+      actionJson += c;
+    } while(c != '\n');
   } else {
-    return "";
+    actionJson = "\{\}";
   }
-  
+
+  return actionJson;
 }
 
 void parseActionJson(String actionJson) {
