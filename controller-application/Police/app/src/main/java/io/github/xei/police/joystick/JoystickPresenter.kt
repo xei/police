@@ -44,7 +44,7 @@ class JoystickPresenter(private val model: JoystickContract.Model, private val v
     override fun sendActionToAgent(action: Action) {
         if (view.isActive) {
             view.sendActionToAgent(action)
-            Log.e("Action: " + action.toString())
+            Log.i("Action: " + action.toString())
         }
     }
 
