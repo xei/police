@@ -30,7 +30,7 @@ class Action {
     var d12: Float = 0.toFloat()
 
     @SerializedName("d13")
-    var d3: Float = 0.toFloat()
+    var d13: Float = 0.toFloat()
 
     override fun toString(): String = Gson().toJson(this)
 
